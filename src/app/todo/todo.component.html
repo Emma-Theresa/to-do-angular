@@ -1,0 +1,16 @@
+<h1 class="title">To-Do List</h1>
+
+<div class="todo">
+
+  <form [formGroup]="TodoForm" (ngSubmit)="submit()">
+    <input type="text" formControlName="text" placeholder="Add item"/>
+    <button type="submit">Add</button>
+  </form>
+  <ul>
+    <li *ngFor="let item of todoItems; let i = index">
+      <input type="checkbox" (change)="toggleCompleted(i)" [checked]="item.completed"/>
+      <span [ngClass]="{'completed': item.completed}">{{ item.text }}</span>
+      <button (click)="deleteItem(i)">Delete</button>
+    </li>
+  </ul>
+</div>
